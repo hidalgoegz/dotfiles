@@ -1,0 +1,119 @@
+scriptencoding utf-8
+
+" Only show syntax when exists -----
+if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
+  syntax on
+endif
+" Only show syntax when exists -----
+
+" Rules -----
+set hlsearch                                                      " highlight searches
+set ignorecase                                                    " case insensitive searching
+set incsearch                                                     " do incremental searching
+set laststatus=2                                                  " Always display the status line
+set number                                                        " Always display cursor line number
+set numberwidth=5                                                 " Max space for line number
+set relativenumber                                                " Show relative line number distance from cursor
+set ruler                                                         " show the cursor position all the time
+set smartcase                                                     " overrides ignorecase when pattern contains caps
+set winwidth=80                                                   " minimum width for active split
+" On auto split first go right then below -----
+set splitright
+set splitbelow
+" End On auto split first go right then below -----
+set backupcopy=yes
+set clipboard+=unnamedplus                                        " Use system clipboard instead of buffer
+set colorcolumn=78
+set formatoptions-=o
+set list listchars=tab:->,trail:~,space:·                         " Show tabs whit -> symbol, trail with ~ symbol and space with .
+set wildmenu wildignorecase wildignore=.git/,.*.sw[a-p],.keep
+
+" Whitespace stuff -----
+set expandtab                                                     " Use spaces instead of tabs
+set shiftround                                                    " idk
+set shiftwidth=2                                                  " idk
+set softtabstop=2                                                 " Indent size
+set tabstop=8                                                     " Size of tab
+" End Whitespace stuff -----
+" End Rules -----
+
+" Load plugins from another file -----
+if filereadable(expand("~/.vimrc.bundles"))
+  source ~/.vimrc.bundles
+  silent! colorscheme dim                                           " Vim theme
+endif
+" End Load plugins from another file -----
+
+" Autocmd -----
+augroup vimrcEx
+  autocmd!
+
+" autocmd VimEnter * :NoMatchParen                                " Don't show parent match (parenthesis and stuff)
+
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it for commit messages, when the position is invalid, or when
+  " inside an event handler (happens when dropping a file on gvim).
+  autocmd BufReadPost *
+    \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
+    \ endif
+
+  " Set syntax highlighting for specific file types -----
+  autocmd BufRead,BufNewFile *.md set filetype=markdown
+  autocmd BufRead,BufNewFile .{jscs,jshint,eslint}rc set filetype=json
+  autocmd BufRead,BufNewFile aliases.local,zshrc.local,*/zsh/configs/* set filetype=sh
+  autocmd BufRead,BufNewFile gitconfig.local set filetype=gitconfig
+  autocmd BufRead,BufNewFile tmux.conf.local set filetype=tmux
+  autocmd BufRead,BufNewFile vimrc.local set filetype=vim
+  " End Set syntax highlighting for specific file types -----
+augroup END
+" End Autocmd -----
+
+" Variables -----
+" When the type of shell script is /bin/sh, assume a POSIX-compatible
+" shell for syntax highlighting purposes.
+let g:is_posix = 1
+
+" w0rp/ale variables -----
+let g:ale_echo_msg_format = '(%linter%) %code%: %s'
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+" End w0rp/ale variables -----
+
+"scrooloose/nerdcommenter
+let g:NERDSpaceDelims = 1                                                               " Delimiters
+let g:NERDDefaultAlign = 'left'                                                         " Default tree alignment
+
+"scrooloose/nerdtree
+let NERDTreeIgnore = ['\~$', '.git$', 'node_modules', '.cache', '.sublime-', '.keep$']  " Ignore this in file tree
+
+" Keyword remaping -----
+" Newbie remaping -----
+nnoremap <C-s> <nop> " Avoid freeze screen for mistake
+nnoremap <C-z> <nop> " Using ctrl + z on vim cause destruction
+" Don't use the arrows dude! -----
+nnoremap <Down> :echoe "Use j"<CR>
+nnoremap <Left> :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Up> :echoe "Use k"<CR>
+" End Don't use the arrows dude! -----
+" End Newbie remaping -----
+
+nnoremap <C-t>t :NERDTreeToggle<CR>                                 " File tree toogle maping
+
+" ALE plugin maping -----
+nnoremap <leader>ad :ALEDetail<CR>
+nnoremap <leader>aj :ALENext<CR>
+nnoremap <leader>ak :ALEPrevious<CR>
+nnoremap <leader>al :ALELint<CR>
+" End ALE plugin maping -----
+
+" Quicker window movement
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+" End Keyword remaping -----
+

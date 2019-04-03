@@ -1,0 +1,74 @@
+" No workarround for no compatibility -----
+if &compatible
+  set nocompatible
+end
+" End No workarround for no compatibility -----
+
+" Auto install plugins when needed -----
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+" End Auto install plugins when needed -----
+
+" Remove declared plugins -----
+function! s:UnPlug(plug_name)
+  if has_key(g:plugs, a:plug_name)
+    call remove(g:plugs, a:plug_name)
+  endif
+endfunction
+command! -nargs=1 UnPlug call s:UnPlug(<args>)
+" End Remove declared plugins -----
+
+" Variables -----
+let g:has_async = v:version >= 800 || has('nvim')
+let g:deoplete#enable_at_startup = 1
+" End Variables -----
+
+call plug#begin('~/.vim/plugged')
+  " File search -----
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
+  " End File search -----
+  " Plug 'cjgajard/patagonia-vim'     " Carlos personalized theme
+  Plug 'elixir-lang/vim-elixir'       " Elixir highligter
+  Plug 'fatih/vim-go'                 " Go highligter
+  Plug 'jeffkreeftmeijer/vim-dim'     " Dim theme
+  Plug 'kchmck/vim-coffee-script'     " Coffe Script highligter
+  Plug 'pangloss/vim-javascript'      " Javascript highligter
+  Plug 'pbrisbin/vim-mkdir'           " Create files and directories with :e command
+  Plug 'rhysd/vim-crystal'
+  Plug 'scrooloose/nerdcommenter'     " Easy Commenter
+  Plug 'scrooloose/nerdtree'          " File tree
+  Plug 'slim-template/vim-slim'       " Highlight of mark language slim
+  Plug 'tpope/vim-bundler'            " Highlighter of bundle file and helper
+  Plug 'tpope/vim-endwise'            " Puts end after do and if for ruby
+  Plug 'tpope/vim-eunuch'             " Helper commands to manipulate files
+  Plug 'tpope/vim-fugitive'           " Super git helper
+  Plug 'tpope/vim-surround'           " Sorround brackets, parenthesis, etc
+  Plug 'tpope/vim-rails'              " Super rails helper
+  Plug 'tpope/vim-rake'               " Super rails rake helper
+  Plug 'tpope/vim-dadbod'             " Database helper from vim
+  Plug 'airblade/vim-gitgutter'       " Show file changes using git
+  Plug 'mattn/emmet-vim'              " Create code with snippets
+  Plug 'freitass/todo.txt-vim'        " TODO highligter and kinda like a helper
+  Plug 'ap/vim-css-color'             " Highlight the colors on css files
+  Plug 'sheerun/vim-polyglot'         " Syntax and helper for a lot of languages
+  Plug 'Shougo/deoplete.nvim'         " Auto completion of location
+  Plug 'roxma/nvim-yarp'              " Avoid using RemotePlugin command (Install dependencies?)
+  Plug 'roxma/vim-hug-neovim-rpc'     " Compatibility of rpc layer vor vim8
+  Plug 'Shougo/neco-syntax'           " Syntax helper for deoplete
+  Plug 'Shougo/neosnippet.vim'        " Allow snippets creations
+  Plug 'Shougo/neosnippet-snippets'   " Snippets repository
+  Plug 'vim-ruby/vim-ruby'            " Helper for ruby and highligter
+  if g:has_async
+    Plug 'w0rp/ale'                   " Linter
+  endif
+call plug#end()
+
+" Remaping -----
+nnoremap <C-p> :FZF<CR>       " use FZF as ctrlp
+" End Remaping -----
+
+filetype plugin indent on
