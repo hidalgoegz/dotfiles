@@ -29,6 +29,7 @@ set list listchars=tab:->,trail:~,space:·                         " Show tabs w
 set wildmenu wildignorecase wildignore=.git/,.*.sw[a-p],.keep
 set nofoldenable                                                  " Disable folding
 set backupdir=~/.vim/tmp                                          " Save backup in a central directory
+set directory=~/.vim/tmp
 
 " Whitespace stuff -----
 set expandtab                                                     " Use spaces instead of tabs
