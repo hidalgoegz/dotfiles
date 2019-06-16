@@ -28,8 +28,8 @@ set formatoptions-=o
 set list listchars=tab:->,trail:~,space:·                         " Show tabs whit -> symbol, trail with ~ symbol and space with .
 set wildmenu wildignorecase wildignore=.git/,.*.sw[a-p],.keep
 set nofoldenable                                                  " Disable folding
-set backupdir=~/.vim/swap                                         " Save backup in a central directory
-set directory=~/.vim/swap
+set backupdir=~/vim-swap                                         " Save backup in a central directory
+set directory=~/vim-swap
 
 " Whitespace stuff -----
 set expandtab                                                     " Use spaces instead of tabs
