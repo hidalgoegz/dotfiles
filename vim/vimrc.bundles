@@ -21,9 +21,23 @@ endfunction
 command! -nargs=1 UnPlug call s:UnPlug(<args>)
 " End Remove declared plugins -----
 
+" Build composer for vim-markdown-composer -----
+" requires Rust
+function! BuildComposer(info)
+  if a:info.status != 'unchanged' || a:info.force
+    if has('nvim')
+      !cargo build --release
+    else
+      !cargo build --release --no-default-features --features json-rpc
+    endif
+  endif
+endfunction
+" End Build composer for vim-markdown-composer -----
+
 " Variables -----
 let g:has_async = v:version >= 800 || has('nvim')
 let g:deoplete#enable_at_startup = 1
+let g:markdown_composer_autostart = 0
 " End Variables -----
 
 call plug#begin('~/.vim/plugged')
@@ -62,6 +76,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'Shougo/neosnippet.vim'        " Allow snippets creations
   Plug 'Shougo/neosnippet-snippets'   " Snippets repository
   Plug 'vim-ruby/vim-ruby'            " Helper for ruby and highligter
+  " Markdown Previw using composer
+  Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
   if g:has_async
     Plug 'w0rp/ale'                   " Linter
   endif
