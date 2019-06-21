@@ -29,5 +29,7 @@ pathappend () {
   export $PATHVARIABLE="${!PATHVARIABLE:+${!PATHVARIABLE}:}$1"
 }
 
+pathappend "${HOME}/.yarn/bin"
+
 export -f pathremove pathprepend pathappend
 
