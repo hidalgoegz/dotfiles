@@ -106,6 +106,12 @@ nnoremap <Up> :echoe "Use k"<CR>
 
 nnoremap <C-t>t :NERDTreeToggle<CR>                                 " File tree toogle maping
 
+" Tabs remaping -----
+nnoremap <C-t>n :tabnew<CR>
+nnoremap <C-t>h :tabp<CR>
+nnoremap <C-t>l :tabn<CR>
+" End Tabs remaping -----
+
 " ALE plugin maping -----
 nnoremap <leader>ad :ALEDetail<CR>
 nnoremap <leader>aj :ALENext<CR>
