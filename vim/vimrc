@@ -90,7 +90,7 @@ let g:NERDSpaceDelims = 1                                                       
 let g:NERDDefaultAlign = 'left'                                                         " Default tree alignment
 
 "scrooloose/nerdtree
-let NERDTreeIgnore = ['\~$', '.git$', 'node_modules', '.cache', '.sublime-', '.keep$']  " Ignore this in file tree
+let NERDTreeIgnore = ['\~$', '^node_modules$']  " Ignore this in file tree
 
 " Keyword remaping -----
 " Newbie remaping -----

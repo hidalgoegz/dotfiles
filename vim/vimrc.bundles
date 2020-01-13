@@ -55,6 +55,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'rhysd/vim-crystal'
   Plug 'scrooloose/nerdcommenter'     " Easy Commenter
   Plug 'scrooloose/nerdtree'          " File tree
+  Plug 'Xuyuanp/nerdtree-git-plugin'  " Git status of files reflected in file tree
+  Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " NerdTree icons and extension for file extension
   Plug 'slim-template/vim-slim'       " Highlight of mark language slim
   Plug 'tpope/vim-bundler'            " Highlighter of bundle file and helper
   Plug 'tpope/vim-endwise'            " Puts end after do and if for ruby
