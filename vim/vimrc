@@ -22,7 +22,7 @@ set splitright
 set splitbelow
 " End On auto split first go right then below -----
 set backupcopy=yes
-set clipboard+=unnamedplus                                        " Use system clipboard instead of buffer
+" set clipboard+=unnamedplus                                        " Use system clipboard instead of buffer
 set colorcolumn=78
 set formatoptions-=o
 set list listchars=tab:->,trail:~,space:·                         " Show tabs whit -> symbol, trail with ~ symbol and space with .
