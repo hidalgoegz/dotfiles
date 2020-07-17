@@ -53,8 +53,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'pangloss/vim-javascript'      " Javascript highligter
   Plug 'pbrisbin/vim-mkdir'           " Create files and directories with :e command
   Plug 'rhysd/vim-crystal'
-  Plug 'scrooloose/nerdcommenter'     " Easy Commenter
-  Plug 'scrooloose/nerdtree'          " File tree
+  Plug 'preservim/nerdcommenter'     " Easy Commenter
+  Plug 'preservim/nerdtree'          " File tree
   Plug 'Xuyuanp/nerdtree-git-plugin'  " Git status of files reflected in file tree
   Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " NerdTree icons and extension for file extension
   Plug 'slim-template/vim-slim'       " Highlight of mark language slim
@@ -80,6 +80,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-ruby/vim-ruby'            " Helper for ruby and highligter
   " Markdown Previw using composer
   Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
+  Plug 'ryanoasis/vim-devicons'       " Icons for nerdtree
   if g:has_async
     Plug 'w0rp/ale'                   " Linter
   endif

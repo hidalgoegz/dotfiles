@@ -1,12 +1,13 @@
 scriptencoding utf-8
 
 " Only show syntax when exists -----
-if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
+" if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax on
-endif
+" endif
 " Only show syntax when exists -----
 
 " Rules -----
+set encoding=UTF-8
 set hlsearch                                                      " highlight searches
 set ignorecase                                                    " case insensitive searching
 set incsearch                                                     " do incremental searching
@@ -90,12 +91,14 @@ let g:ale_linters = {
 \ }
 " End w0rp/ale variables -----
 
-"scrooloose/nerdcommenter
+"preservim/nerdcommenter
 let g:NERDSpaceDelims = 1                                                               " Delimiters
 let g:NERDDefaultAlign = 'left'                                                         " Default tree alignment
 
-"scrooloose/nerdtree
+"preservim/nerdtree
 let NERDTreeIgnore = ['\~$', '^node_modules$']  " Ignore this in file tree
+let g:NERDTreeDirArrowExpandable = ''
+let g:NERDTreeDirArrowCollapsible = ''
 
 " Keyword remaping -----
 " Newbie remaping -----

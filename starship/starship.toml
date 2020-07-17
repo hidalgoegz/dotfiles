@@ -1,0 +1,12 @@
+[character]
+symbol = ""
+error_symbol = ""
+vicmd_symbol = ""
+
+[time]
+use_12hr = true
+format = "%Y-%m-%d %I:%M %P"
+disabled = false
+
+[username]
+show_always = true
